@@ -34,6 +34,13 @@ tasks.register('runLengthHeaderExample', JavaExec) {
     mainClass = 'com.mujin.cs.network.LengthHeaderExample'
 }
 
+tasks.register('runSocketExample', JavaExec) {
+    group = 'application'
+    description = 'Runs an IP, port, and socket connection example.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.mujin.cs.network.SocketConnectionExample'
+}
+
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
