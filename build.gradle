@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'com.mujin.study'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+application {
+    mainClass = 'com.mujin.cs.bytes.HexAndUtf8Example'
+}
+
+tasks.register('runHexExample', JavaExec) {
+    group = 'application'
+    description = 'Runs bit, byte, hex, and UTF-8 examples.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.mujin.cs.bytes.HexAndUtf8Example'
+}
+
+tasks.register('runLengthHeaderExample', JavaExec) {
+    group = 'application'
+    description = 'Runs a header/body length framing example.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.mujin.cs.network.LengthHeaderExample'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
