@@ -19,6 +19,8 @@ socket은 정확히 무엇일까?
 | --- | --- | --- |
 | 첫 번째 | [바이트부터 TCP 메시지 경계까지](docs/2026-06-09-byte-network-basics.md) | 16진수, UTF-8, TCP stream, 길이 헤더 |
 | 두 번째 | [IP, port, socket 연결 흐름](docs/02-ip-port-socket.md) | IP, port, socket, client/server, 요청/응답 |
+| 세 번째 | [TCP 연결 생명주기](docs/03-tcp-connection-lifecycle.md) | listen, connect, accept, close 흐름 |
+| 네 번째 | [Blocking I/O와 thread](docs/04-blocking-io-thread.md) | blocking read, thread 대기, 서버 확장 문제 |
 
 ## 예제 실행
 
@@ -26,6 +28,8 @@ socket은 정확히 무엇일까?
 .\gradlew.bat runHexExample
 .\gradlew.bat runLengthHeaderExample
 .\gradlew.bat runSocketExample
+.\gradlew.bat runTcpLifecycleExample
+.\gradlew.bat runBlockingIoExample
 ```
 
 ## 실행 결과 예시
@@ -46,6 +50,17 @@ server listening: 127.0.0.1:19090
 client connected to server
 server received: PING
 client received: PONG
+
+server: listen 127.0.0.1:19100
+client: connect
+server: accept
+client: send HELLO
+server: read HELLO
+client: read WORLD
+
+server: waiting for client message on blocking-server-thread
+client: send PING
+server: read PING
 ```
 
 ## 예제 코드
@@ -54,7 +69,10 @@ client received: PONG
 src/main/java/com/mujin/cs
 ├─ bytes
 │  └─ HexAndUtf8Example.java
+├─ io
+│  └─ BlockingIoThreadExample.java
 └─ network
    ├─ LengthHeaderExample.java
-   └─ SocketConnectionExample.java
+   ├─ SocketConnectionExample.java
+   └─ TcpConnectionLifecycleExample.java
 ```

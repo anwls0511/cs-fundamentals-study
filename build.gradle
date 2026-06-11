@@ -41,6 +41,20 @@ tasks.register('runSocketExample', JavaExec) {
     mainClass = 'com.mujin.cs.network.SocketConnectionExample'
 }
 
+tasks.register('runTcpLifecycleExample', JavaExec) {
+    group = 'application'
+    description = 'Runs a TCP connection lifecycle example.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.mujin.cs.network.TcpConnectionLifecycleExample'
+}
+
+tasks.register('runBlockingIoExample', JavaExec) {
+    group = 'application'
+    description = 'Runs a blocking I/O and thread example.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.mujin.cs.io.BlockingIoThreadExample'
+}
+
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
