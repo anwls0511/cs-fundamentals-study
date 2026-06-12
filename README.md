@@ -21,6 +21,8 @@ socket은 정확히 무엇일까?
 | 두 번째 | [IP, port, socket 연결 흐름](docs/02-ip-port-socket.md) | IP, port, socket, client/server, 요청/응답 |
 | 세 번째 | [TCP 연결 생명주기](docs/03-tcp-connection-lifecycle.md) | listen, connect, accept, close 흐름 |
 | 네 번째 | [Blocking I/O와 thread](docs/04-blocking-io-thread.md) | blocking read, thread 대기, 서버 확장 문제 |
+| 다섯 번째 | [Non-blocking I/O](docs/05-non-blocking-io.md) | 기다리지 않는 read, polling, CPU 낭비 가능성 |
+| 여섯 번째 | [Event Loop](docs/06-event-loop.md) | 이벤트 큐, 단일 loop, Netty와의 연결 |
 
 ## 예제 실행
 
@@ -30,6 +32,8 @@ socket은 정확히 무엇일까?
 .\gradlew.bat runSocketExample
 .\gradlew.bat runTcpLifecycleExample
 .\gradlew.bat runBlockingIoExample
+.\gradlew.bat runNonBlockingIoExample
+.\gradlew.bat runEventLoopExample
 ```
 
 ## 실행 결과 예시
@@ -61,6 +65,14 @@ client: read WORLD
 server: waiting for client message on blocking-server-thread
 client: send PING
 server: read PING
+
+non-blocking read: no data yet
+client: send PING
+server: read PING
+
+event-loop: handle ACCEPT
+event-loop: handle READ
+event-loop: handle WRITE
 ```
 
 ## 예제 코드
@@ -70,7 +82,10 @@ src/main/java/com/mujin/cs
 ├─ bytes
 │  └─ HexAndUtf8Example.java
 ├─ io
-│  └─ BlockingIoThreadExample.java
+│  ├─ BlockingIoThreadExample.java
+│  └─ NonBlockingIoExample.java
+├─ eventloop
+│  └─ SimpleEventLoopExample.java
 └─ network
    ├─ LengthHeaderExample.java
    ├─ SocketConnectionExample.java

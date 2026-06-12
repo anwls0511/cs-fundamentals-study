@@ -55,6 +55,20 @@ tasks.register('runBlockingIoExample', JavaExec) {
     mainClass = 'com.mujin.cs.io.BlockingIoThreadExample'
 }
 
+tasks.register('runNonBlockingIoExample', JavaExec) {
+    group = 'application'
+    description = 'Runs a non-blocking I/O polling example.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.mujin.cs.io.NonBlockingIoExample'
+}
+
+tasks.register('runEventLoopExample', JavaExec) {
+    group = 'application'
+    description = 'Runs a small event loop example.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.mujin.cs.eventloop.SimpleEventLoopExample'
+}
+
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
