@@ -1,28 +1,41 @@
 # cs-fundamentals-study
 
-백엔드 개발자가 코드를 리뷰하고 설계를 이해하기 위해 쌓아가는 CS 기본기 학습 기록입니다.
+비전공 백엔드 개발자가 전공자 수준의 기본기를 따라가기 위해 정리하는 CS 학습 기록입니다.
 
-## 학습 질문
+목표는 특정 프레임워크 사용법을 외우는 것이 아니라, 코드를 리뷰할 때 **왜 이렇게 동작하는지** 설명할 수 있는 기반을 만드는 것입니다.
+
+## 학습 방향
 
 ```text
-00 00 00 2A는 왜 42일까?
-문자열은 네트워크에서 어떤 바이트로 변할까?
-TCP에서 메시지 하나의 끝은 어떻게 알까?
-헤더에 body length를 넣는다는 건 무슨 뜻일까?
-IP와 port는 각각 무슨 역할일까?
-socket은 정확히 무엇일까?
+코드를 작성할 수 있다
+  -> 코드가 왜 그렇게 동작하는지 설명할 수 있다
+  -> 어떤 구현이 위험한지 리뷰할 수 있다
+  -> 설계 선택의 이유와 trade-off를 말할 수 있다
 ```
 
-## 학습 기록
+## 학습 맵
 
-| 구분 | 문서 | 내용 |
+| 영역 | 상태 | 목표 |
 | --- | --- | --- |
-| 첫 번째 | [바이트부터 TCP 메시지 경계까지](docs/2026-06-09-byte-network-basics.md) | 16진수, UTF-8, TCP stream, 길이 헤더 |
-| 두 번째 | [IP, port, socket 연결 흐름](docs/02-ip-port-socket.md) | IP, port, socket, client/server, 요청/응답 |
-| 세 번째 | [TCP 연결 생명주기](docs/03-tcp-connection-lifecycle.md) | listen, connect, accept, close 흐름 |
-| 네 번째 | [Blocking I/O와 thread](docs/04-blocking-io-thread.md) | blocking read, thread 대기, 서버 확장 문제 |
-| 다섯 번째 | [Non-blocking I/O](docs/05-non-blocking-io.md) | 기다리지 않는 read, polling, CPU 낭비 가능성 |
-| 여섯 번째 | [Event Loop](docs/06-event-loop.md) | 이벤트 큐, 단일 loop, Netty와의 연결 |
+| Network | 진행 중 | TCP, socket, I/O, event loop를 이해한다. |
+| Operating System | 예정 | process, thread, memory, context switching을 이해한다. |
+| Data Structure | 예정 | List, Map, Queue, Hash를 구현 관점에서 이해한다. |
+| Database | 예정 | index, transaction, lock을 백엔드 관점에서 이해한다. |
+| Concurrency | 예정 | race condition, deadlock, thread-safe를 이해한다. |
+
+## Network
+
+Netty를 공부하다가 나온 질문을 시작점으로, 네트워크와 I/O 기본기를 정리하고 있습니다.  
+Netty 자체가 목적은 아니고, TCP 서버 코드가 왜 그런 구조를 가지는지 이해하는 것이 목적입니다.
+
+| 순서 | 문서 | 핵심 질문 |
+| --- | --- | --- |
+| 01 | [바이트와 인코딩](docs/network/01-byte-hex-encoding.md) | 데이터는 실제로 어떤 바이트로 오갈까? |
+| 02 | [IP, port, socket](docs/network/02-ip-port-socket.md) | 클라이언트는 서버를 어떻게 찾아갈까? |
+| 03 | [TCP 연결 생명주기](docs/network/03-tcp-connection-lifecycle.md) | 연결은 언제 만들어지고 언제 닫힐까? |
+| 04 | [Blocking I/O와 thread](docs/network/04-blocking-io-thread.md) | 왜 thread가 기다리게 될까? |
+| 05 | [Non-blocking I/O](docs/network/05-non-blocking-io.md) | 기다리지 않는 I/O는 어떻게 동작할까? |
+| 06 | [Event Loop](docs/network/06-event-loop.md) | 적은 thread로 많은 이벤트를 어떻게 처리할까? |
 
 ## 예제 실행
 
@@ -34,45 +47,6 @@ socket은 정확히 무엇일까?
 .\gradlew.bat runBlockingIoExample
 .\gradlew.bat runNonBlockingIoExample
 .\gradlew.bat runEventLoopExample
-```
-
-## 실행 결과 예시
-
-```text
-int value: 42
-4-byte hex: 00 00 00 2A
-
-text: 가
-char length: 1
-byte length: 3
-utf-8 hex: EA B0 80
-
-header body length: 42
-decoded body: {"deviceId":"device-1","temperature":25.1}
-
-server listening: 127.0.0.1:19090
-client connected to server
-server received: PING
-client received: PONG
-
-server: listen 127.0.0.1:19100
-client: connect
-server: accept
-client: send HELLO
-server: read HELLO
-client: read WORLD
-
-server: waiting for client message on blocking-server-thread
-client: send PING
-server: read PING
-
-non-blocking read: no data yet
-client: send PING
-server: read PING
-
-event-loop: handle ACCEPT
-event-loop: handle READ
-event-loop: handle WRITE
 ```
 
 ## 예제 코드
@@ -90,4 +64,15 @@ src/main/java/com/mujin/cs
    ├─ LengthHeaderExample.java
    ├─ SocketConnectionExample.java
    └─ TcpConnectionLifecycleExample.java
+```
+
+## 다음에 이어갈 주제
+
+Network 챕터를 마무리한 뒤에는 OS 기본기로 넘어갈 예정입니다.
+
+```text
+07. Process와 Thread
+08. Context Switching
+09. Stack과 Heap
+10. Race Condition
 ```
