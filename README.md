@@ -46,6 +46,8 @@ thread, process, context switching을 알아야 blocking I/O, non-blocking I/O, 
 | --- | --- | --- |
 | 07 | [Process와 Thread](docs/os/07-process-thread.md) | 프로그램은 실행되면 어떤 단위로 동작할까? |
 | 08 | [Context Switching](docs/os/08-context-switching.md) | CPU는 여러 작업을 어떻게 번갈아 처리할까? |
+| 09 | [Stack과 Heap](docs/os/09-stack-heap.md) | 메모리는 어떤 영역으로 나뉘어 사용될까? |
+| 10 | [Race Condition](docs/os/10-race-condition.md) | 같은 데이터를 동시에 바꾸면 왜 문제가 생길까? |
 
 ## 예제 실행
 
@@ -81,8 +83,8 @@ src/main/java/com/mujin/cs
 OS 기본기를 이어서 정리할 예정입니다.
 
 ```text
-09. Stack과 Heap
-10. Race Condition
 11. Deadlock
 12. Thread-safe
+13. Lock과 synchronized
+14. JVM 메모리 구조
 ```
