@@ -118,6 +118,6 @@ client request
 왜 Netty는 EventLoop thread를 막지 말라고 할까?
 ```
 
-## 5. 면접에서 설명할 수 있는 문장
+## 5. 오늘의 정리
 
-> process는 실행 중인 프로그램이고, thread는 process 안에서 실제 코드를 실행하는 흐름입니다. process끼리는 메모리가 분리되지만, 같은 process의 thread들은 메모리 일부를 공유합니다. 그래서 thread를 사용하면 같은 데이터를 쉽게 공유할 수 있지만, 동시에 접근할 때 race condition 같은 동시성 문제가 생길 수 있습니다.
+process는 실행 중인 프로그램이고, thread는 process 안에서 실제 코드를 실행하는 흐름이다. process끼리는 메모리가 분리되지만, 같은 process의 thread들은 메모리 일부를 공유한다. 그래서 thread를 사용하면 같은 데이터를 쉽게 공유할 수 있지만, 동시에 접근할 때 race condition 같은 동시성 문제가 생길 수 있다.

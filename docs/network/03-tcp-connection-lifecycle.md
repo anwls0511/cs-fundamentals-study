@@ -102,6 +102,6 @@ client: close
 server: close
 ```
 
-## 7. 면접에서 설명할 수 있는 문장
+## 7. 오늘의 정리
 
-> TCP 서버는 먼저 특정 port를 열고 listen 상태로 대기합니다. 클라이언트가 서버 IP와 port로 connect하면 서버는 accept를 통해 연결을 받아들이고, 그 결과 생성된 socket으로 데이터를 주고받습니다. 통신이 끝나면 socket을 닫아 연결을 정리해야 합니다.
+TCP 서버는 먼저 특정 port를 열고 listen 상태로 대기한다. 클라이언트가 서버 IP와 port로 connect하면 서버는 accept를 통해 연결을 받아들이고, 그 결과 생성된 socket으로 데이터를 주고받는다. 통신이 끝나면 socket을 닫아 연결을 정리해야 한다.

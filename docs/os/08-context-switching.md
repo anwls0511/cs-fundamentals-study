@@ -124,6 +124,6 @@ EventLoop thread에서 오래 걸리는 작업을 하면
 
 즉, context switching을 줄이려는 구조와 event loop를 막지 않아야 하는 이유는 같이 이해해야 한다.
 
-## 6. 면접에서 설명할 수 있는 문장
+## 6. 오늘의 정리
 
-> context switching은 OS가 실행 중인 process나 thread를 바꿀 때 현재 실행 상태를 저장하고 다음 실행 상태를 복원하는 작업입니다. 이 작업은 꼭 필요하지만 비용이 있기 때문에 thread가 너무 많아지면 실제 로직보다 전환 비용이 커질 수 있습니다. 그래서 서버에서는 요청마다 thread를 무한히 늘리는 구조보다 thread 수와 blocking 작업을 함께 고려해야 합니다.
+context switching은 OS가 실행 중인 process나 thread를 바꿀 때 현재 실행 상태를 저장하고 다음 실행 상태를 복원하는 작업이다. 이 작업은 꼭 필요하지만 비용이 있기 때문에 thread가 너무 많아지면 실제 로직보다 전환 비용이 커질 수 있다. 그래서 서버에서는 요청마다 thread를 무한히 늘리는 구조보다 thread 수와 blocking 작업을 함께 고려해야 한다.

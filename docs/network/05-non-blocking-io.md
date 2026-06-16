@@ -94,6 +94,6 @@ Netty는 내부적으로 Java NIO 기반의 non-blocking I/O와 이벤트 루프
 
 개발자는 직접 `Selector`를 다루지 않고도 `ChannelPipeline`, `Handler`, `EventLoopGroup` 같은 추상화로 네트워크 이벤트를 처리할 수 있다.
 
-## 6. 면접에서 설명할 수 있는 문장
+## 6. 오늘의 정리
 
-> Blocking I/O는 데이터가 올 때까지 thread가 멈춰 기다리는 방식이고, non-blocking I/O는 데이터가 없으면 바로 반환되는 방식입니다. non-blocking 방식은 thread를 오래 붙잡지 않는 장점이 있지만, 단순 반복 확인은 CPU를 낭비할 수 있어서 Selector나 이벤트 루프처럼 준비된 이벤트를 알려주는 구조와 함께 사용합니다.
+Blocking I/O는 데이터가 올 때까지 thread가 멈춰 기다리는 방식이고, non-blocking I/O는 데이터가 없으면 바로 반환되는 방식이다. non-blocking 방식은 thread를 오래 붙잡지 않는 장점이 있지만, 단순 반복 확인은 CPU를 낭비할 수 있어서 Selector나 이벤트 루프처럼 준비된 이벤트를 알려주는 구조와 함께 사용한다.

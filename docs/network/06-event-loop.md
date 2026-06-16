@@ -84,6 +84,6 @@ EventLoopGroup
 
 그래서 Netty Handler 안에서 오래 걸리는 작업을 직접 수행하면 이벤트 루프 thread가 막힐 수 있다. 이 점을 이해하면 Netty 코드에서 왜 blocking 작업을 조심해야 하는지 설명할 수 있다.
 
-## 5. 면접에서 설명할 수 있는 문장
+## 5. 오늘의 정리
 
-> 이벤트 루프는 이벤트 큐에서 작업을 하나씩 꺼내 처리하는 반복 구조입니다. Netty에서는 EventLoop가 Channel의 read, write 같은 I/O 이벤트를 처리합니다. 이벤트 루프 thread가 막히면 해당 EventLoop에 등록된 다른 Channel 처리도 늦어질 수 있기 때문에, Handler 안에서 오래 걸리는 blocking 작업은 조심해야 합니다.
+이벤트 루프는 이벤트 큐에서 작업을 하나씩 꺼내 처리하는 반복 구조다. Netty에서는 EventLoop가 Channel의 read, write 같은 I/O 이벤트를 처리한다. 이벤트 루프 thread가 막히면 해당 EventLoop에 등록된 다른 Channel 처리도 늦어질 수 있기 때문에, Handler 안에서 오래 걸리는 blocking 작업은 조심해야 한다.
